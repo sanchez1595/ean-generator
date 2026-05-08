@@ -5,3 +5,4 @@ out
 data/database.json
 *.log
 .DS_Store
+*.tsbuildinfo
