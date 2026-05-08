@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    background: theme('colors.paper');
+  }
+
+  body {
+    color: theme('colors.ink');
+    font-feature-settings: 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: theme('colors.accent');
+    color: white;
+  }
+
+  /* Inputs base */
+  input[type='text'],
+  input[type='number'],
+  textarea,
+  select {
+    @apply w-full rounded-none border border-rule bg-surface px-3 py-2 text-ink outline-none transition-colors;
+    @apply focus:border-ink focus:ring-0;
+  }
+
+  input[type='text']::placeholder,
+  textarea::placeholder {
+    @apply text-ink-faint;
+  }
+
+  label {
+    @apply block text-[11px] font-medium uppercase tracking-wider2 text-ink-muted;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium transition-all;
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-paper;
+  }
+  .btn-primary {
+    @apply btn bg-ink text-paper hover:bg-ink/90 active:bg-ink;
+  }
+  .btn-ghost {
+    @apply btn border border-rule bg-surface text-ink hover:border-ink;
+  }
+  .btn-danger {
+    @apply btn border border-danger/30 bg-surface text-danger hover:border-danger hover:bg-danger hover:text-white;
+  }
+
+  .card {
+    @apply border border-rule bg-surface;
+  }
+
+  .label-mini {
+    @apply text-[10px] font-medium uppercase tracking-wider2 text-ink-faint;
+  }
+
+  .gtin-display {
+    @apply font-mono text-2xl tracking-wider text-ink;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-1.5 border border-rule bg-paper px-2 py-0.5 font-mono text-[11px] uppercase tracking-wider2 text-ink-muted;
+  }
+
+  .pill-accent {
+    @apply pill border-accent/30 bg-accent-soft text-accent;
+  }
+
+  .pill-warn {
+    @apply pill border-warn/30 bg-warn/5 text-warn;
+  }
+
+  .pill-danger {
+    @apply pill border-danger/30 bg-danger/5 text-danger;
+  }
+}
+
+@layer utilities {
+  .grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.02;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
