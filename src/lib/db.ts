@@ -5,7 +5,10 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import type { CompanyConfig, DatabaseShape, Product } from './types';
 
-const DB_DIR = path.join(process.cwd(), 'data');
+// En Vercel/serverless el filesystem del proyecto es read-only.
+// Solo /tmp es escribible (efímero, se pierde entre cold starts).
+const IS_SERVERLESS = !!process.env.VERCEL || !!process.env.AWS_LAMBDA_FUNCTION_NAME;
+const DB_DIR = IS_SERVERLESS ? '/tmp/ean-generator' : path.join(process.cwd(), 'data');
 const DB_PATH = path.join(DB_DIR, 'database.json');
 
 const EMPTY_DB: DatabaseShape = {
