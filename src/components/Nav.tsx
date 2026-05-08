@@ -7,6 +7,7 @@ const links = [
   { href: '/', label: 'Inicio' },
   { href: '/generate', label: 'Generar' },
   { href: '/bulk', label: 'Lote' },
+  { href: '/import', label: 'Importar XLSX' },
   { href: '/products', label: 'Catálogo' },
   { href: '/validate', label: 'Validar' },
   { href: '/settings', label: 'Configuración' },
